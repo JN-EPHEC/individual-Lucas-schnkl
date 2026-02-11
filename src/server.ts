@@ -1,5 +1,6 @@
 import express from 'express';
 import type { Request, Response } from 'express';
+import userRouter from './routes/userRoutes.js';
 
 const  app = express();
 const port = 3000;
@@ -19,3 +20,5 @@ app.get(`${route}`, (req: Request, res: Response) => {
 app.listen(port, () => {
     console.log(`Serveur sur http://localhost:${port}${route}`);
 });
+
+app.use('/api/users', userRouter);
