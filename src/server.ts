@@ -1,10 +1,12 @@
 import express from 'express';
 import type { Request, Response } from 'express';
 import userRouter from './routes/userRoutes.js';
+import sequelize from './config/database.js';
 
 const  app = express();
 const port = 3000;
 const route = "/api/hello/:name"
+
 
 const etudiants = [
 { id: 1, nom: "Dupont", prenom: "Jean" },
@@ -22,3 +24,10 @@ app.listen(port, () => {
 });
 
 app.use('/api/users', userRouter);
+
+try {
+  sequelize.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+};
