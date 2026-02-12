@@ -21,3 +21,5 @@ User.init(
     modelName: 'User', // We need to choose the model name
   },
 );
+
+export default User;
