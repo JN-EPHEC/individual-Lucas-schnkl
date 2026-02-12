@@ -1,5 +1,6 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+import { DataTypes, Model} from 'sequelize';
+import sequelize from '../config/database.js';
+
 
 class User extends Model {}
 
@@ -18,7 +19,8 @@ User.init(
   {
     // Other model options go here
     sequelize, // We need to pass the connection instance
-    modelName: 'User', // We need to choose the model name
+    modelName: 'user', // We need to choose the model name
+    tableName: 'users'
   },
 );
 
