@@ -8,6 +8,7 @@ const app = express();
 const port = 3000;
 const route = "/api/hello/:name"
 
+app.use(express.static('public'));
 app.use(express.json());
 
 const etudiants = [

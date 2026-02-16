@@ -9,13 +9,13 @@ router.get('/', async function(req: Request, res: Response) {
     res.send(users);
 });
 
-router.post('/', (req: Request, res: Response) =>{
-    User.create({nom : "testNom", prenom : "testPrenom", createdAt : date_ajd.toLocaleDateString(), updatedAt : date_ajd.toLocaleDateString()});
+router.post('/', async (req: Request, res: Response) =>{
+    await User.create({nom : req.body.nom, prenom : req.body.prenom, createdAt : date_ajd.toLocaleDateString(), updatedAt : date_ajd.toLocaleDateString()});
     res.send((req.body));
 });
 
-router.delete('/:id', (req: Request, res: Response) => {
-    User.destroy({
+router.delete('/:id', async (req: Request, res: Response) => {
+    await User.destroy({
         where: {
             id: req.params['id']
         }
