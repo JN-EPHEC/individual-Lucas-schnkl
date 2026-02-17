@@ -5,7 +5,7 @@ async function init(){
     liste.innerHTML = "";
 
     for(i of utilisateurs){
-        liste.innerHTML += `<li id='${i.id}' class=list-group list-group-flush>${i.nom} ${i.prenom}<button onclick='delete_user(${i.id});'>X</button></li>`;
+        liste.innerHTML += `<li id='${i.id}' class="list-group-item d-flex justify-content-between align-items-center">${i.nom} ${i.prenom}<button class='btn btn-secondary btn-sm' onclick='delete_user(${i.id});'>X</button></li>`;
     }
 }
 
