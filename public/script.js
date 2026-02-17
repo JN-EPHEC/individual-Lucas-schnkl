@@ -5,7 +5,7 @@ async function init(){
     liste.innerHTML = "";
 
     for(i of utilisateurs){
-        liste.innerHTML += "<li class=list-group list-group-flush>" + `${i.nom} ${i.prenom}` + "</li>";
+        liste.innerHTML += `<li id='${i.id}' class=list-group list-group-flush>${i.nom} ${i.prenom}<button onclick='delete_user(${i.id});'>X</button></li>`;
     }
 }
 
@@ -21,6 +21,14 @@ async function soumission_form(){
             nom : nom,
             prenom : prenom
         })
+    });
+
+    init();
+}
+
+async function delete_user(id){
+    await fetch(`http://localhost:3000/api/users/${id}`, {
+        method : "DELETE",
     });
 
     init();

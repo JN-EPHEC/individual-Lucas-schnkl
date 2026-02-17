@@ -27,6 +27,6 @@ app.use('/api/users', userRouter);
 sequelize.sync().then(() => {
     console.log("Base de données synchronisée");
     app.listen(port, () =>{
-        console.log(`Serveur ok http://localhost:${port}${route}`);
+        console.log(`Serveur ok http://localhost:${port}`);
     });
 });
