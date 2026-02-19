@@ -1,18 +1,12 @@
 import {Router, type Request, type Response} from 'express';
 import User from '../models/User.js';
+import * as userController from "../controllers/userControllers.js";
+
 
 const router = Router();
 const date_ajd = new Date();
 
-router.get('/', async function(req: Request, res: Response) {    
-    try{
-        let users = await User.findAll();
-        res.status(200).json(users);
-    } catch (error){
-        console.error(error);
-        res.status(500).send("Erreur serveur");
-    }
-});
+router.get("/", userController.getAllUsers);
 
 router.post('/', async (req: Request, res: Response) =>{
     try{
