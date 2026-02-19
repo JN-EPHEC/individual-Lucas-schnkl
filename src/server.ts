@@ -5,11 +5,14 @@ import sequelize from './config/database.js';
 import User from './models/User.js';
 import { requestLogger } from './middlewares/logger.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import swaggerUi from "swagger-ui-express";
+import { swaggerSpec } from "./config/swagger";
 
 const app = express();
 const port = 3000;
 const route = "/api/hello/:name"
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(express.static('public'));
 app.use(express.json());
 app.use('/api/users', userRouter);

@@ -6,6 +6,16 @@ import * as userController from "../controllers/userControllers.js";
 const router = Router();
 const date_ajd = new Date();
 
+/**
+* @swagger
+* /api/users:
+*   get:
+*       summary: Récupère la liste des utilisateurs
+*       tags: [Users]
+*       responses:
+*           200:
+*               description: Succès
+*/
 router.get("/", userController.getAllUsers);
 
 router.post('/', async (req: Request, res: Response) =>{
