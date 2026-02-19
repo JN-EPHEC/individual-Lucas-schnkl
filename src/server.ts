@@ -3,7 +3,8 @@ import type { Request, Response } from 'express';
 import userRouter from './routes/userRoutes.js';
 import sequelize from './config/database.js';
 import User from './models/User.js';
-import { requestLogger } from './middleware/logger.js';
+import { requestLogger } from './middlewares/logger.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 const app = express();
 const port = 3000;
@@ -13,7 +14,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use('/api/users', userRouter);
 app.use(requestLogger);
-
+app.use(errorHandler);
 
 const etudiants = [
 { id: 1, nom: "Dupont", prenom: "Jean" },
