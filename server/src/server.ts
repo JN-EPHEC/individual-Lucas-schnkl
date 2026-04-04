@@ -7,6 +7,7 @@ import { requestLogger } from './middlewares/logger.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import swaggerUi from "swagger-ui-express";
 import { swaggerSpec } from "./config/swagger";
+import adminRouter from "./routes/adminRoutes";
 import cors from 'cors';
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use('/api/users', userRouter);
 app.use(requestLogger);
+app.use("/api/admin", adminRouter);
 app.use(errorHandler);
 
 const etudiants = [
