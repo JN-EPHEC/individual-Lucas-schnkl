@@ -9,14 +9,6 @@ const router = Router();
  *   get:
  *     summary: Route admin protégée en HTTP Basic
  *     tags: [Admin]
- *     components: {
- *       securitySchemes: {
- *         basicAuth: {
- *           type: 'http',
- *             scheme: 'basic'
- *         }
- *       }
- *     }
  *     security:
  *       - basicAuth: []
  *     responses:
